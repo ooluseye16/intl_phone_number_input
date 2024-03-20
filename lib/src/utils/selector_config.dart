@@ -36,6 +36,16 @@ class SelectorConfig {
   /// Use safe area for selectorType=BOTTOM_SHEET
   final bool useBottomSheetSafeArea;
 
+  ///Add dropdown icon
+  final Widget? dropdownIcon;
+
+  ///Selector decoration
+  final BoxDecoration? selectorDecoration;
+
+  final EdgeInsets? selectorPadding;
+
+  final BoxShape flagShape;
+
   const SelectorConfig({
     this.selectorType = PhoneInputSelectorType.DROPDOWN,
     this.showFlags = true,
@@ -45,5 +55,9 @@ class SelectorConfig {
     this.leadingPadding,
     this.trailingSpace = true,
     this.useBottomSheetSafeArea = false,
+    this.dropdownIcon,
+    this.selectorDecoration,
+    this.selectorPadding,
+    this.flagShape = BoxShape.rectangle,
   });
 }

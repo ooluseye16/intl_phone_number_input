@@ -51,8 +51,13 @@ class _MyHomePageState extends State<MyHomePage> {
                 print(value);
               },
               selectorConfig: SelectorConfig(
-                selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
+                selectorType: PhoneInputSelectorType.DROPDOWN,
                 useBottomSheetSafeArea: true,
+                dropdownIcon: Icon(Icons.abc),
+                flagShape: BoxShape.circle,
+                selectorDecoration:
+                    BoxDecoration(border: Border.all(color: Colors.grey)),
+                selectorPadding: EdgeInsets.symmetric(vertical: 6),
               ),
               ignoreBlank: false,
               autoValidateMode: AutovalidateMode.disabled,

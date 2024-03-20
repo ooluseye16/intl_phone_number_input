@@ -11,6 +11,7 @@ class Item extends StatelessWidget {
   final bool withCountryNames;
   final double? leadingPadding;
   final bool trailingSpace;
+  final BoxShape flagShape;
 
   const Item({
     Key? key,
@@ -21,6 +22,7 @@ class Item extends StatelessWidget {
     this.withCountryNames = false,
     this.leadingPadding = 12,
     this.trailingSpace = true,
+    required this.flagShape,
   }) : super(key: key);
 
   @override
@@ -39,6 +41,7 @@ class Item extends StatelessWidget {
             country: country,
             showFlag: showFlag,
             useEmoji: useEmoji,
+            flagShape: flagShape,
           ),
           SizedBox(width: 12.0),
           Text(
@@ -56,14 +59,22 @@ class _Flag extends StatelessWidget {
   final Country? country;
   final bool? showFlag;
   final bool? useEmoji;
+  final BoxShape flagShape;
 
-  const _Flag({Key? key, this.country, this.showFlag, this.useEmoji})
+  const _Flag(
+      {Key? key,
+      this.country,
+      this.showFlag,
+      this.useEmoji,
+      required this.flagShape})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return country != null && showFlag!
         ? Container(
+            decoration: BoxDecoration(shape: flagShape),
+            clipBehavior: Clip.hardEdge,
             child: useEmoji!
                 ? Text(
                     Utils.generateFlagEmojiUnicode(country?.alpha2Code ?? ''),

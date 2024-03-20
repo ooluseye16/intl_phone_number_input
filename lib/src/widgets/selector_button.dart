@@ -17,7 +17,7 @@ class SelectorButton extends StatelessWidget {
   final String? locale;
   final bool isEnabled;
   final bool isScrollControlled;
-
+  final Widget dropdownIcon;
   final ValueChanged<Country?> onCountryChanged;
 
   const SelectorButton({
@@ -32,6 +32,7 @@ class SelectorButton extends StatelessWidget {
     required this.onCountryChanged,
     required this.isEnabled,
     required this.isScrollControlled,
+    required this.dropdownIcon,
   }) : super(key: key);
 
   @override
@@ -40,9 +41,11 @@ class SelectorButton extends StatelessWidget {
         ? countries.isNotEmpty && countries.length > 1
             ? DropdownButtonHideUnderline(
                 child: DropdownButton<Country>(
+                  icon: dropdownIcon,
                   key: Key(TestHelper.DropdownButtonKeyValue),
                   hint: Item(
                     country: country,
+                    flagShape: selectorConfig.flagShape,
                     showFlag: selectorConfig.showFlags,
                     useEmoji: selectorConfig.useEmoji,
                     leadingPadding: selectorConfig.leadingPadding,
@@ -57,6 +60,7 @@ class SelectorButton extends StatelessWidget {
             : Item(
                 country: country,
                 showFlag: selectorConfig.showFlags,
+                flagShape: selectorConfig.flagShape,
                 useEmoji: selectorConfig.useEmoji,
                 leadingPadding: selectorConfig.leadingPadding,
                 trailingSpace: selectorConfig.trailingSpace,
@@ -88,6 +92,7 @@ class SelectorButton extends StatelessWidget {
               child: Item(
                 country: country,
                 showFlag: selectorConfig.showFlags,
+                flagShape: selectorConfig.flagShape,
                 useEmoji: selectorConfig.useEmoji,
                 leadingPadding: selectorConfig.leadingPadding,
                 trailingSpace: selectorConfig.trailingSpace,
@@ -107,6 +112,7 @@ class SelectorButton extends StatelessWidget {
           key: Key(TestHelper.countryItemKeyValue(country.alpha2Code)),
           country: country,
           showFlag: selectorConfig.showFlags,
+          flagShape: selectorConfig.flagShape,
           useEmoji: selectorConfig.useEmoji,
           textStyle: selectorTextStyle,
           withCountryNames: false,
